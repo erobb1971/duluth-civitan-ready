@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, LogIn } from 'lucide-react';
 import { Button } from './ui/button';
 
 const Navbar = () => {
@@ -8,6 +8,11 @@ const Navbar = () => {
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const handleLoginClick = () => {
+    // Placeholder for login functionality
+    console.log('Login button clicked');
   };
 
   return (
@@ -27,10 +32,24 @@ const Navbar = () => {
             <a href="#events" className="font-medium">Events</a>
             <a href="#join" className="font-medium">Join Us</a>
             <Button className="bg-civitan-blue hover:bg-civitan-gold hover:text-civitan-blue">Donate</Button>
+            <Button 
+              onClick={handleLoginClick}
+              className="bg-civitan-blue text-white hover:bg-civitan-gold hover:text-civitan-blue"
+            >
+              <LogIn size={16} className="mr-2" /> Login
+            </Button>
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center">
+          <div className="md:hidden flex items-center space-x-2">
+            <Button 
+              onClick={handleLoginClick}
+              variant="ghost"
+              size="icon"
+              className="text-civitan-blue hover:text-civitan-gold"
+            >
+              <LogIn size={24} />
+            </Button>
             <button
               onClick={toggleMenu}
               className="inline-flex items-center justify-center p-2 rounded-md text-civitan-blue hover:text-civitan-gold focus:outline-none"
@@ -52,6 +71,12 @@ const Navbar = () => {
             <a href="#events" className="block px-3 py-2 text-base font-medium">Events</a>
             <a href="#join" className="block px-3 py-2 text-base font-medium">Join Us</a>
             <Button className="w-full mt-2 bg-civitan-blue hover:bg-civitan-gold hover:text-civitan-blue">Donate</Button>
+            <Button 
+              onClick={handleLoginClick}
+              className="w-full mt-2 bg-civitan-blue hover:bg-civitan-gold hover:text-civitan-blue"
+            >
+              <LogIn size={16} className="mr-2" /> Login
+            </Button>
           </div>
         </div>
       )}
