@@ -11,7 +11,6 @@ const Navbar = () => {
   };
 
   const handleLoginClick = () => {
-    // Placeholder for login functionality
     console.log('Login button clicked');
   };
 
@@ -28,6 +27,7 @@ const Navbar = () => {
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
             <a href="#about" className="font-medium">About</a>
+            <a href="#history" className="font-medium">History</a>
             <a href="#programs" className="font-medium">Programs</a>
             <a href="#events" className="font-medium">Events</a>
             <Button className="bg-civitan-blue hover:bg-civitan-gold hover:text-civitan-blue">Donate</Button>
@@ -66,6 +66,7 @@ const Navbar = () => {
         <div className="md:hidden">
           <div className="pt-2 pb-3 space-y-1 px-2">
             <a href="#about" className="block px-3 py-2 text-base font-medium">About</a>
+            <a href="#history" className="block px-3 py-2 text-base font-medium">History</a>
             <a href="#programs" className="block px-3 py-2 text-base font-medium">Programs</a>
             <a href="#events" className="block px-3 py-2 text-base font-medium">Events</a>
             <Button className="w-full mt-2 bg-civitan-blue hover:bg-civitan-gold hover:text-civitan-blue">Donate</Button>
@@ -83,4 +84,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-

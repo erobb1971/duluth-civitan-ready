@@ -7,27 +7,27 @@ import { Calendar, Clock, MapPin } from 'lucide-react';
 const events = [
   {
     id: 1,
-    title: "Monthly Meeting",
-    date: "August 15, 2023",
-    time: "7:00 PM - 8:30 PM",
-    location: "Duluth City Hall",
-    description: "Join us for our monthly membership meeting where we'll discuss upcoming events and service opportunities."
+    title: "Upcoming Community Workshop",
+    date: "July 15, 2024",
+    time: "10:00 AM - 2:00 PM",
+    location: "Duluth Community Center",
+    description: "Join us for an interactive workshop focused on community development and volunteer opportunities."
   },
   {
     id: 2,
-    title: "Fall Fundraising Gala",
-    date: "October 12, 2023",
-    time: "6:00 PM - 10:00 PM",
-    location: "Duluth Convention Center",
-    description: "Our annual fundraising gala featuring dinner, silent auction, and entertainment. All proceeds support our programs."
+    title: "Summer Fundraising Picnic",
+    date: "August 22, 2024",
+    time: "12:00 PM - 4:00 PM",
+    location: "Local Park Pavilion",
+    description: "A fun-filled day of food, games, and raising funds for our community programs."
   },
   {
     id: 3,
-    title: "Holiday Food Drive",
-    date: "November 18-20, 2023",
-    time: "9:00 AM - 5:00 PM",
-    location: "Duluth Community Center",
-    description: "Help us collect food items for families in need during the holiday season."
+    title: "Annual Volunteer Recognition",
+    date: "September 10, 2024",
+    time: "6:00 PM - 9:00 PM",
+    location: "Duluth Civic Center",
+    description: "Celebrating our amazing volunteers and their incredible contributions to the community."
   }
 ];
 
@@ -38,7 +38,7 @@ const EventsSection = () => {
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Upcoming Events</h2>
           <div className="w-20 h-1 bg-civitan-gold mx-auto mb-6"></div>
-          <p className="max-w-3xl mx-auto text-lg">Join us at one of our upcoming events to get involved, meet our members, and support our mission.</p>
+          <p className="max-w-3xl mx-auto text-lg">Stay informed about our latest community initiatives and networking opportunities.</p>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
