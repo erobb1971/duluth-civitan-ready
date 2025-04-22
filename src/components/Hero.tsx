@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
@@ -60,7 +59,6 @@ const Hero = () => {
             <div className="bg-white/95 p-8 rounded-lg">
               <h3 className="text-2xl font-bold text-civitan-blue mb-6">Membership Application</h3>
               
-              {/* New image centered above the form */}
               <div className="flex justify-center mb-6">
                 <img 
                   src="/lovable-uploads/2e31ada2-2131-47d1-ad50-613017a83c78.png" 
