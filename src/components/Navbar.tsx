@@ -4,8 +4,6 @@ import { Button } from './ui/button';
 import {
   Dialog,
   DialogContent,
-  DialogHeader,
-  DialogTitle,
 } from "@/components/ui/dialog";
 
 const Navbar = () => {
@@ -37,7 +35,7 @@ const Navbar = () => {
               onClick={() => setShowAboutModal(true)}
               className="font-medium hover:text-civitan-gold"
             >
-              About
+              Learn More About Civitan
             </Button>
             <a href="#history" className="font-medium">History</a>
             <a href="#programs" className="font-medium">Programs</a>
@@ -81,7 +79,7 @@ const Navbar = () => {
               onClick={() => setShowAboutModal(true)}
               className="w-full text-left font-medium"
             >
-              About
+              Learn More About Civitan
             </Button>
             <a href="#history" className="block px-3 py-2 text-base font-medium">History</a>
             <a href="#programs" className="block px-3 py-2 text-base font-medium">Programs</a>
@@ -98,32 +96,18 @@ const Navbar = () => {
 
       {/* About Modal */}
       <Dialog open={showAboutModal} onOpenChange={setShowAboutModal}>
-        <DialogContent className="sm:max-w-[600px] p-6">
-          <DialogHeader>
-            <DialogTitle className="text-2xl font-bold text-civitan-blue mb-4">About Duluth Civitan</DialogTitle>
-          </DialogHeader>
+        <DialogContent className="sm:max-w-[600px] p-8">
           <div className="space-y-6">
             <div>
-              <h3 className="text-xl font-semibold mb-3">Our Mission</h3>
-              <p className="text-gray-700">
-                Duluth Civitan is dedicated to serving individual and community needs with an emphasis on helping people with developmental disabilities and providing scholarships to deserving students.
-              </p>
-            </div>
-            <div>
-              <h3 className="text-xl font-semibold mb-3">Who We Are</h3>
-              <p className="text-gray-700">
-                As a proud member of Civitan International, we build good citizenship by providing a volunteer organization of clubs dedicated to serving individual and community needs with an emphasis on helping people with developmental disabilities.
-              </p>
-            </div>
-            <div>
-              <h3 className="text-xl font-semibold mb-3">Our Values</h3>
-              <ul className="list-disc pl-5 space-y-2 text-gray-700">
-                <li>Service to others</li>
-                <li>Knowledge that leads to understanding</li>
-                <li>Fellowship among members</li>
-                <li>Community engagement</li>
-                <li>Integrity in all we do</li>
-              </ul>
+              <h2 className="text-2xl font-bold text-civitan-blue mb-6">About the Duluth Civitan Club</h2>
+              <div className="text-gray-700 space-y-4">
+                <p>
+                  Founded in 2003 as a proud chapter of Civitan International (est. 1917), the Duluth Civitan Club unites neighbors who know that serving others sparks real community change. From barn‑blitz days at Driving Magic's therapeutic equine farm to co‑hosting Gwinnett's Race for Autism & Fall Festival, our members dedicate time and energy to empower individuals with intellectual and developmental disabilities—and to uplift Duluth at every turn.
+                </p>
+                <p>
+                  Meet us over lunch on the 2nd and 4th Mondays each month, grab a "buddy" mentor, and discover how a few hours of volunteering can become a lifetime of impact. We're also eager to welcome new members from across Gwinnett County—join us and help expand our reach to make life better for even more neighbors.
+                </p>
+              </div>
             </div>
           </div>
         </DialogContent>
