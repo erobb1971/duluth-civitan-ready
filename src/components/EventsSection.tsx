@@ -7,27 +7,27 @@ import { Calendar, Clock, MapPin } from 'lucide-react';
 const events = [
   {
     id: 1,
-    title: "Upcoming Community Workshop",
-    date: "July 15, 2024",
+    title: "Community Engagement Workshop",
+    date: "May 15, 2024",
     time: "10:00 AM - 2:00 PM",
     location: "Duluth Community Center",
-    description: "Join us for an interactive workshop focused on community development and volunteer opportunities."
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer varius pharetra eros, id eleifend mauris maximus faucibus. Pellentesque ligula ipsum, cursus eget neque id, ultrices rhoncus ipsum."
   },
   {
     id: 2,
-    title: "Summer Fundraising Picnic",
-    date: "August 22, 2024",
-    time: "12:00 PM - 4:00 PM",
+    title: "Volunteer Appreciation Event",
+    date: "June 22, 2024",
+    time: "1:00 PM - 5:00 PM",
     location: "Local Park Pavilion",
-    description: "A fun-filled day of food, games, and raising funds for our community programs."
+    description: "Ut ultrices eros a sagittis porttitor. Phasellus pulvinar justo sit amet dapibus suscipit. Praesent gravida felis vitae ex elementum porttitor. Ut eros sem, consequat non efficitur in, laoreet ultrices erat."
   },
   {
     id: 3,
-    title: "Annual Volunteer Recognition",
-    date: "September 10, 2024",
+    title: "Annual Community Gathering",
+    date: "July 10, 2024",
     time: "6:00 PM - 9:00 PM",
     location: "Duluth Civic Center",
-    description: "Celebrating our amazing volunteers and their incredible contributions to the community."
+    description: "Nullam sit amet nibh convallis, rhoncus diam eget, tristique lacus. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
   }
 ];
 
