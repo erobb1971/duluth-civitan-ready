@@ -1,10 +1,16 @@
-
 import { useState } from 'react';
 import { Menu, X, LogIn } from 'lucide-react';
 import { Button } from './ui/button';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [showAboutModal, setShowAboutModal] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -26,10 +32,15 @@ const Navbar = () => {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
-            <a href="#about" className="font-medium">About</a>
+            <Button 
+              variant="ghost" 
+              onClick={() => setShowAboutModal(true)}
+              className="font-medium hover:text-civitan-gold"
+            >
+              About
+            </Button>
             <a href="#history" className="font-medium">History</a>
             <a href="#programs" className="font-medium">Programs</a>
-            <a href="#events" className="font-medium">Events</a>
             <Button className="bg-civitan-blue hover:bg-civitan-gold hover:text-civitan-blue">Donate</Button>
             <Button 
               onClick={handleLoginClick}
@@ -65,10 +76,15 @@ const Navbar = () => {
       {isMenuOpen && (
         <div className="md:hidden">
           <div className="pt-2 pb-3 space-y-1 px-2">
-            <a href="#about" className="block px-3 py-2 text-base font-medium">About</a>
+            <Button 
+              variant="ghost"
+              onClick={() => setShowAboutModal(true)}
+              className="w-full text-left font-medium"
+            >
+              About
+            </Button>
             <a href="#history" className="block px-3 py-2 text-base font-medium">History</a>
             <a href="#programs" className="block px-3 py-2 text-base font-medium">Programs</a>
-            <a href="#events" className="block px-3 py-2 text-base font-medium">Events</a>
             <Button className="w-full mt-2 bg-civitan-blue hover:bg-civitan-gold hover:text-civitan-blue">Donate</Button>
             <Button 
               onClick={handleLoginClick}
@@ -79,6 +95,39 @@ const Navbar = () => {
           </div>
         </div>
       )}
+
+      {/* About Modal */}
+      <Dialog open={showAboutModal} onOpenChange={setShowAboutModal}>
+        <DialogContent className="sm:max-w-[600px] p-6">
+          <DialogHeader>
+            <DialogTitle className="text-2xl font-bold text-civitan-blue mb-4">About Duluth Civitan</DialogTitle>
+          </DialogHeader>
+          <div className="space-y-6">
+            <div>
+              <h3 className="text-xl font-semibold mb-3">Our Mission</h3>
+              <p className="text-gray-700">
+                Duluth Civitan is dedicated to serving individual and community needs with an emphasis on helping people with developmental disabilities and providing scholarships to deserving students.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-xl font-semibold mb-3">Who We Are</h3>
+              <p className="text-gray-700">
+                As a proud member of Civitan International, we build good citizenship by providing a volunteer organization of clubs dedicated to serving individual and community needs with an emphasis on helping people with developmental disabilities.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-xl font-semibold mb-3">Our Values</h3>
+              <ul className="list-disc pl-5 space-y-2 text-gray-700">
+                <li>Service to others</li>
+                <li>Knowledge that leads to understanding</li>
+                <li>Fellowship among members</li>
+                <li>Community engagement</li>
+                <li>Integrity in all we do</li>
+              </ul>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
     </nav>
   );
 };
