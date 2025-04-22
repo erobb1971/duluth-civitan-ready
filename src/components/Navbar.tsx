@@ -30,7 +30,6 @@ const Navbar = () => {
             <a href="#about" className="font-medium">About</a>
             <a href="#programs" className="font-medium">Programs</a>
             <a href="#events" className="font-medium">Events</a>
-            <a href="#join" className="font-medium">Join Us</a>
             <Button className="bg-civitan-blue hover:bg-civitan-gold hover:text-civitan-blue">Donate</Button>
             <Button 
               onClick={handleLoginClick}
@@ -69,7 +68,6 @@ const Navbar = () => {
             <a href="#about" className="block px-3 py-2 text-base font-medium">About</a>
             <a href="#programs" className="block px-3 py-2 text-base font-medium">Programs</a>
             <a href="#events" className="block px-3 py-2 text-base font-medium">Events</a>
-            <a href="#join" className="block px-3 py-2 text-base font-medium">Join Us</a>
             <Button className="w-full mt-2 bg-civitan-blue hover:bg-civitan-gold hover:text-civitan-blue">Donate</Button>
             <Button 
               onClick={handleLoginClick}
@@ -85,3 +83,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+

@@ -6,7 +6,6 @@ import AboutSection from '../components/AboutSection';
 import HistorySection from '../components/HistorySection';
 import ProgramsSection from '../components/ProgramsSection';
 import EventsSection from '../components/EventsSection';
-import JoinSection from '../components/JoinSection';
 import Footer from '../components/Footer';
 
 const Index = () => {
@@ -18,10 +17,10 @@ const Index = () => {
       <HistorySection />
       <ProgramsSection />
       <EventsSection />
-      <JoinSection />
       <Footer />
     </div>
   );
 };
 
 export default Index;
+
