@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 
@@ -26,11 +27,14 @@ const programs = [
 
 const ProgramsSection = () => {
   return (
-    <section id="programs" className="relative -mt-32 py-16">
+    <section id="programs" className="relative -mt-32 py-16 z-30">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {programs.map((program, index) => (
-            <Card key={index} className="transition-transform duration-300 hover:shadow-lg hover:-translate-y-1">
+            <Card 
+              key={index} 
+              className="transition-transform duration-300 hover:shadow-lg hover:-translate-y-1 relative z-40"
+            >
               <CardHeader>
                 <div className="text-4xl mb-4">{program.icon}</div>
                 <CardTitle>{program.title}</CardTitle>
