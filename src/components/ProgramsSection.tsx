@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 
@@ -27,14 +26,8 @@ const programs = [
 
 const ProgramsSection = () => {
   return (
-    <section id="programs" className="py-16">
+    <section id="programs" className="relative -mt-32 py-16">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Programs</h2>
-          <div className="w-20 h-1 bg-civitan-gold mx-auto mb-6"></div>
-          <p className="max-w-3xl mx-auto text-lg">We're dedicated to making a positive impact in our community through various programs and initiatives.</p>
-        </div>
-        
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {programs.map((program, index) => (
             <Card key={index} className="transition-transform duration-300 hover:shadow-lg hover:-translate-y-1">
@@ -47,10 +40,6 @@ const ProgramsSection = () => {
               </CardContent>
             </Card>
           ))}
-        </div>
-        
-        <div className="text-center mt-12">
-          <a href="#contact" className="btn-primary inline-block">Get Involved</a>
         </div>
       </div>
     </section>
