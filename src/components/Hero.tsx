@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
@@ -58,6 +59,16 @@ const Hero = () => {
 
             <div className="bg-white/95 p-8 rounded-lg">
               <h3 className="text-2xl font-bold text-civitan-blue mb-6">Membership Application</h3>
+              
+              {/* New image centered above the form */}
+              <div className="flex justify-center mb-6">
+                <img 
+                  src="/lovable-uploads/2e31ada2-2131-47d1-ad50-613017a83c78.png" 
+                  alt="We Are Civitan" 
+                  className="max-w-full h-auto object-contain px-4 py-2 max-h-64"
+                />
+              </div>
+
               <form className="space-y-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <Input 
