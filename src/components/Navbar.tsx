@@ -23,13 +23,6 @@ const Navbar = () => {
       <div className="mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           <div className="flex items-center">
-            <div className="flex-shrink-0">
-              <h1 className="text-2xl font-bold text-civitan-blue">Duluth Civitan</h1>
-            </div>
-          </div>
-
-          {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-8">
             <Button 
               variant="ghost" 
               onClick={() => setShowAboutModal(true)}
@@ -37,6 +30,10 @@ const Navbar = () => {
             >
               Learn More About Civitan
             </Button>
+          </div>
+
+          {/* Desktop Menu */}
+          <div className="hidden md:flex items-center space-x-8">
             <a href="#history" className="font-medium">History</a>
             <a href="#programs" className="font-medium">Programs</a>
             <Button className="bg-civitan-blue hover:bg-civitan-gold hover:text-civitan-blue">Donate</Button>
