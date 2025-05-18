@@ -28,8 +28,8 @@ const AboutSection = () => {
           <div className="bg-white p-6 rounded-lg shadow-lg">
             <div className="aspect-w-16 aspect-h-9 mb-6">
               <img 
-                src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" 
-                alt="Civitan members" 
+                src="/lovable-uploads/020f9474-de2a-4e83-94b3-353ffb02f4cf.png" 
+                alt="Civitan member" 
                 className="w-full h-64 object-cover rounded-lg"
               />
             </div>
