@@ -1,21 +1,73 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "./ui/dialog";
-import { Mail, Users, Calendar, Shield } from "lucide-react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "./ui/dialog";
+import { Mail, Users, Calendar, Shield, Link } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 
 const Hero = () => {
-  const [showModal, setShowModal] = React.useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    interests: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
 
   const handleEmailClick = () => {
-    window.location.href = "mailto:admin@duluthcivitanclub.org";
+    window.location.href = "mailto:info@duluthcivitanclub.org?subject=Membership%20Inquiry";
+  };
+
+  const handleFormSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    // In a real implementation, this would send data to a server
+    // For now, we'll simulate sending an email by creating a mailto link
+    const subject = encodeURIComponent("Membership");
+    const body = encodeURIComponent(
+      `New membership inquiry:\n\nName: ${formData.firstName} ${formData.lastName}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nInterests: ${formData.interests}`
+    );
+    
+    // Open email client with pre-filled information
+    window.location.href = `mailto:info@duluthcivitanclub.org?subject=${subject}&body=${body}`;
+    
+    // Reset form and show success message
+    setTimeout(() => {
+      setFormData({
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+        interests: ''
+      });
+      setIsSubmitting(false);
+      toast({
+        title: "Information Request Sent",
+        description: "Thank you for your interest. We'll be in touch soon!",
+      });
+    }, 1000);
   };
 
   return (
-    <div className="relative bg-gradient-to-r from-civitan-blue to-civitan-blue/80">
-      <div className="bg-[url('https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80')] bg-cover bg-center bg-blend-overlay bg-black/30 h-[800px] md:h-[900px]"></div>
+    <div className="relative">
+      {/* Hero image with overlay */}
+      <div className="relative">
+        <div className="bg-[url('/lovable-uploads/3bd7f222-8050-4cc2-9ee7-ca1c0fec1d86.png')] bg-cover bg-center h-[800px] md:h-[900px]"></div>
+        <div className="absolute inset-0 bg-[#00000040]"></div> {/* 25% opacity navy overlay */}
+      </div>
+
+      {/* Content over the hero image */}
       <div className="container mx-auto px-4 absolute inset-0 z-20 flex items-center">
         <div className="w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
@@ -33,7 +85,7 @@ const Hero = () => {
                   <Users className="h-6 w-6 text-civitan-gold flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="text-xl font-semibold mb-1">Expand Your Professional Network</h3>
-                    <p className="text-white/80">Connect with local leaders and professionals in your field</p>
+                    <p className="text-white/90">Connect with local leaders and professionals in your field</p>
                   </div>
                 </div>
                 
@@ -41,7 +93,7 @@ const Hero = () => {
                   <Calendar className="h-6 w-6 text-civitan-gold flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="text-xl font-semibold mb-1">Flexible Commitment</h3>
-                    <p className="text-white/80">Designed for busy professionals with family responsibilities</p>
+                    <p className="text-white/90">Designed for busy professionals with family responsibilities</p>
                   </div>
                 </div>
                 
@@ -49,17 +101,27 @@ const Hero = () => {
                   <Shield className="h-6 w-6 text-civitan-gold flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="text-xl font-semibold mb-1">Build Your Leadership Skills</h3>
-                    <p className="text-white/80">Enhance your resume while making a meaningful difference</p>
+                    <p className="text-white/90">Enhance your resume while making a meaningful difference</p>
                   </div>
                 </div>
               </div>
               
-              <Button 
-                className="mt-10 bg-civitan-gold text-civitan-blue hover:bg-white hover:text-civitan-blue text-lg px-8 py-6 h-auto"
-                onClick={() => setShowModal(true)}
-              >
-                Learn More About Membership
-              </Button>
+              <div className="mt-10 flex flex-wrap gap-4">
+                <Button 
+                  className="bg-civitan-gold text-civitan-blue hover:bg-white hover:text-civitan-blue text-lg px-8 py-6 h-auto"
+                  onClick={() => setShowModal(true)}
+                >
+                  Learn More About Membership
+                </Button>
+                
+                <Button 
+                  className="bg-white text-civitan-blue hover:bg-civitan-gold hover:text-civitan-blue text-lg px-8 py-6 h-auto"
+                  onClick={() => window.open('https://duluthcivitanclub.org', '_blank')}
+                >
+                  <Link className="h-5 w-5 mr-2" />
+                  Visit Our Website
+                </Button>
+              </div>
             </div>
             
             <div className="bg-white/98 p-8 rounded-lg shadow-xl">
@@ -74,36 +136,59 @@ const Hero = () => {
               <h3 className="text-2xl font-bold text-civitan-blue mb-2 text-center">Join Our Community</h3>
               <p className="text-center text-gray-600 mb-6">Get information about upcoming events and membership opportunities</p>
               
-              <form className="space-y-4">
+              <form onSubmit={handleFormSubmit} className="space-y-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <Input 
                     type="text"
+                    name="firstName"
+                    value={formData.firstName}
+                    onChange={handleChange}
                     placeholder="First Name"
                     className="bg-white"
+                    required
                   />
                   <Input 
                     type="text"
+                    name="lastName"
+                    value={formData.lastName}
+                    onChange={handleChange}
                     placeholder="Last Name"
                     className="bg-white"
+                    required
                   />
                 </div>
                 <Input 
                   type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
                   placeholder="Email Address"
                   className="bg-white"
+                  required
                 />
                 <Input 
                   type="tel"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
                   placeholder="Phone Number"
                   className="bg-white"
+                  required
                 />
                 <Textarea
+                  name="interests"
+                  value={formData.interests}
+                  onChange={handleChange}
                   placeholder="What interests you most about our community?"
                   className="bg-white"
                   rows={3}
                 />
-                <Button type="submit" className="w-full bg-civitan-blue hover:bg-civitan-gold hover:text-civitan-blue py-6 h-auto text-lg font-semibold">
-                  Request Information
+                <Button 
+                  type="submit" 
+                  className="w-full bg-civitan-blue hover:bg-civitan-gold hover:text-civitan-blue py-6 h-auto text-lg font-semibold"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? "Sending..." : "Request Information"}
                 </Button>
                 <p className="text-xs text-center text-gray-500 mt-2">
                   By submitting, you agree to receive communications from us. You can unsubscribe anytime.
@@ -120,13 +205,12 @@ const Hero = () => {
             <DialogTitle className="text-2xl font-bold text-civitan-blue mb-4">
               Join Our Community of Professionals Making an Impact
             </DialogTitle>
+            <DialogDescription className="text-lg text-civitan-gray">
+              The Duluth Civitan Club connects career-focused professionals who want to leverage their skills for community impact while building valuable connections.
+            </DialogDescription>
           </DialogHeader>
           
           <div className="space-y-6 text-civitan-gray">
-            <p className="text-lg">
-              The Duluth Civitan Club connects career-focused professionals who want to leverage their skills for community impact while building valuable connections.
-            </p>
-
             <div>
               <h3 className="text-xl font-semibold mb-4">Benefits designed for professionals like you:</h3>
               <ul className="space-y-4">
