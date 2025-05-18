@@ -63,15 +63,15 @@ const Hero = () => {
     <div className="relative">
       {/* Hero image with overlay */}
       <div className="relative">
-        <div className="bg-[url('/lovable-uploads/3bd7f222-8050-4cc2-9ee7-ca1c0fec1d86.png')] bg-cover bg-center h-[800px] md:h-[900px]"></div>
-        <div className="absolute inset-0 bg-[#00000040]"></div> {/* 25% opacity navy overlay */}
+        <div className="bg-[url('/lovable-uploads/c661b80b-0f36-491c-8501-278dc0b2f7c8.png')] bg-cover bg-center h-[800px] md:h-[900px]"></div>
+        <div className="absolute inset-0 bg-[#ffffff40]"></div> {/* 25% opacity white overlay */}
       </div>
 
       {/* Content over the hero image */}
       <div className="container mx-auto px-4 absolute inset-0 z-20 flex items-center">
         <div className="w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-            <div className="text-white">
+            <div className="text-civitan-blue">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
                 Make a <span className="text-civitan-gold">Real Difference</span> in Your Community
               </h1>
@@ -85,7 +85,7 @@ const Hero = () => {
                   <Users className="h-6 w-6 text-civitan-gold flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="text-xl font-semibold mb-1">Expand Your Professional Network</h3>
-                    <p className="text-white/90">Connect with local leaders and professionals in your field</p>
+                    <p className="text-civitan-blue/90">Connect with local leaders and professionals in your field</p>
                   </div>
                 </div>
                 
@@ -93,7 +93,7 @@ const Hero = () => {
                   <Calendar className="h-6 w-6 text-civitan-gold flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="text-xl font-semibold mb-1">Flexible Commitment</h3>
-                    <p className="text-white/90">Designed for busy professionals with family responsibilities</p>
+                    <p className="text-civitan-blue/90">Designed for busy professionals with family responsibilities</p>
                   </div>
                 </div>
                 
@@ -101,7 +101,7 @@ const Hero = () => {
                   <Shield className="h-6 w-6 text-civitan-gold flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="text-xl font-semibold mb-1">Build Your Leadership Skills</h3>
-                    <p className="text-white/90">Enhance your resume while making a meaningful difference</p>
+                    <p className="text-civitan-blue/90">Enhance your resume while making a meaningful difference</p>
                   </div>
                 </div>
               </div>
