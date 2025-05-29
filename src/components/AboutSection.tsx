@@ -70,47 +70,117 @@ const AboutSection = () => {
           </div>
         </div>
         
-        {/* Civitan Creeds Section */}
-        <div className="mt-16">
-          <h3 className="text-3xl font-bold text-center mb-8">Civitan Creeds</h3>
-          <div className="bg-white p-8 rounded-lg shadow-lg">
-            <div className="prose prose-lg max-w-none text-civitan-blue">
-              <p className="text-lg leading-relaxed mb-4">
-                <strong>I AM CIVITAN:</strong> as old as life, as young as the rainbow, as endless as time.
-              </p>
-              <p className="text-lg leading-relaxed mb-4">
-                <strong>MY HANDS</strong> do the work of the world and reach out in service to others.
-              </p>
-              <p className="text-lg leading-relaxed mb-4">
-                <strong>MY EARS</strong> hear the cry of children and the call throughout the world for peace, guidance, progress, and unity.
-              </p>
-              <p className="text-lg leading-relaxed mb-4">
-                <strong>MY EYES</strong> search for others to join in the fellowship and service of Duluth Civitan.
-              </p>
-              <p className="text-lg leading-relaxed mb-4">
-                <strong>MY MOUTH</strong> utters the call to daily duty and speaks prayers in every tongue.
-              </p>
-              <p className="text-lg leading-relaxed mb-4">
-                <strong>MY MIND</strong> teaches me respect for law and the flag of my country.
-              </p>
-              <p className="text-lg leading-relaxed mb-4">
-                <strong>MY HEART</strong> beats for every friend, bleeds for every injury to humanity, and throbs with joy at every triumph of truth.
-              </p>
-              <p className="text-lg leading-relaxed mb-4">
-                <strong>MY SOUL</strong> knows no fear but its own unworthiness.
-              </p>
-              <p className="text-lg leading-relaxed mb-4">
-                <strong>MY HOPE</strong> is for a better world through Duluth Civitan.
-              </p>
-              <p className="text-lg leading-relaxed mb-4">
-                <strong>MY MOTTO:</strong> builders of good citizenship.
-              </p>
-              <p className="text-lg leading-relaxed mb-4">
-                <strong>MY BELIEF:</strong> do unto others as you would have them do unto you.
-              </p>
-              <p className="text-lg leading-relaxed">
-                <strong>MY PLEDGE:</strong> to practice the Golden Rule and to build upon it a better and nobler citizenship.
-              </p>
+        {/* Enhanced Civitan Creeds Section */}
+        <div className="mt-20">
+          <div className="text-center mb-12">
+            <h3 className="text-4xl md:text-5xl font-bold text-civitan-blue mb-4">Civitan Creeds</h3>
+            <div className="w-24 h-1 bg-civitan-gold mx-auto mb-6"></div>
+            <p className="text-xl text-civitan-gray max-w-2xl mx-auto">
+              The timeless words that guide our purpose and inspire our service to the community
+            </p>
+          </div>
+          
+          <div className="relative overflow-hidden rounded-2xl shadow-2xl">
+            {/* Gradient Background */}
+            <div className="absolute inset-0 bg-gradient-to-br from-civitan-blue via-blue-800 to-blue-900"></div>
+            
+            {/* Decorative Elements */}
+            <div className="absolute top-0 right-0 w-64 h-64 bg-civitan-gold opacity-10 rounded-full -translate-y-32 translate-x-32"></div>
+            <div className="absolute bottom-0 left-0 w-48 h-48 bg-white opacity-10 rounded-full translate-y-24 -translate-x-24"></div>
+            
+            {/* Content */}
+            <div className="relative p-8 md:p-12 lg:p-16">
+              <div className="max-w-4xl mx-auto">
+                <div className="grid gap-6 text-white">
+                  <div className="group hover:bg-white/10 p-4 rounded-lg transition-all duration-300 hover:scale-105">
+                    <p className="text-lg md:text-xl leading-relaxed">
+                      <span className="text-civitan-gold font-bold text-xl md:text-2xl">I AM CIVITAN:</span> 
+                      <span className="ml-2">as old as life, as young as the rainbow, as endless as time.</span>
+                    </p>
+                  </div>
+                  
+                  <div className="group hover:bg-white/10 p-4 rounded-lg transition-all duration-300 hover:scale-105">
+                    <p className="text-lg md:text-xl leading-relaxed">
+                      <span className="text-civitan-gold font-bold text-xl md:text-2xl">MY HANDS</span> 
+                      <span className="ml-2">do the work of the world and reach out in service to others.</span>
+                    </p>
+                  </div>
+                  
+                  <div className="group hover:bg-white/10 p-4 rounded-lg transition-all duration-300 hover:scale-105">
+                    <p className="text-lg md:text-xl leading-relaxed">
+                      <span className="text-civitan-gold font-bold text-xl md:text-2xl">MY EARS</span> 
+                      <span className="ml-2">hear the cry of children and the call throughout the world for peace, guidance, progress, and unity.</span>
+                    </p>
+                  </div>
+                  
+                  <div className="group hover:bg-white/10 p-4 rounded-lg transition-all duration-300 hover:scale-105">
+                    <p className="text-lg md:text-xl leading-relaxed">
+                      <span className="text-civitan-gold font-bold text-xl md:text-2xl">MY EYES</span> 
+                      <span className="ml-2">search for others to join in the fellowship and service of Duluth Civitan.</span>
+                    </p>
+                  </div>
+                  
+                  <div className="group hover:bg-white/10 p-4 rounded-lg transition-all duration-300 hover:scale-105">
+                    <p className="text-lg md:text-xl leading-relaxed">
+                      <span className="text-civitan-gold font-bold text-xl md:text-2xl">MY MOUTH</span> 
+                      <span className="ml-2">utters the call to daily duty and speaks prayers in every tongue.</span>
+                    </p>
+                  </div>
+                  
+                  <div className="group hover:bg-white/10 p-4 rounded-lg transition-all duration-300 hover:scale-105">
+                    <p className="text-lg md:text-xl leading-relaxed">
+                      <span className="text-civitan-gold font-bold text-xl md:text-2xl">MY MIND</span> 
+                      <span className="ml-2">teaches me respect for law and the flag of my country.</span>
+                    </p>
+                  </div>
+                  
+                  <div className="group hover:bg-white/10 p-4 rounded-lg transition-all duration-300 hover:scale-105">
+                    <p className="text-lg md:text-xl leading-relaxed">
+                      <span className="text-civitan-gold font-bold text-xl md:text-2xl">MY HEART</span> 
+                      <span className="ml-2">beats for every friend, bleeds for every injury to humanity, and throbs with joy at every triumph of truth.</span>
+                    </p>
+                  </div>
+                  
+                  <div className="group hover:bg-white/10 p-4 rounded-lg transition-all duration-300 hover:scale-105">
+                    <p className="text-lg md:text-xl leading-relaxed">
+                      <span className="text-civitan-gold font-bold text-xl md:text-2xl">MY SOUL</span> 
+                      <span className="ml-2">knows no fear but its own unworthiness.</span>
+                    </p>
+                  </div>
+                  
+                  <div className="group hover:bg-white/10 p-4 rounded-lg transition-all duration-300 hover:scale-105">
+                    <p className="text-lg md:text-xl leading-relaxed">
+                      <span className="text-civitan-gold font-bold text-xl md:text-2xl">MY HOPE</span> 
+                      <span className="ml-2">is for a better world through Duluth Civitan.</span>
+                    </p>
+                  </div>
+                  
+                  <div className="mt-8 pt-8 border-t border-civitan-gold/30">
+                    <div className="grid md:grid-cols-3 gap-6">
+                      <div className="group hover:bg-white/10 p-4 rounded-lg transition-all duration-300 hover:scale-105 text-center">
+                        <p className="text-lg md:text-xl leading-relaxed">
+                          <span className="text-civitan-gold font-bold text-xl md:text-2xl block mb-2">MY MOTTO:</span> 
+                          <span>builders of good citizenship.</span>
+                        </p>
+                      </div>
+                      
+                      <div className="group hover:bg-white/10 p-4 rounded-lg transition-all duration-300 hover:scale-105 text-center">
+                        <p className="text-lg md:text-xl leading-relaxed">
+                          <span className="text-civitan-gold font-bold text-xl md:text-2xl block mb-2">MY BELIEF:</span> 
+                          <span>do unto others as you would have them do unto you.</span>
+                        </p>
+                      </div>
+                      
+                      <div className="group hover:bg-white/10 p-4 rounded-lg transition-all duration-300 hover:scale-105 text-center">
+                        <p className="text-lg md:text-xl leading-relaxed">
+                          <span className="text-civitan-gold font-bold text-xl md:text-2xl block mb-2">MY PLEDGE:</span> 
+                          <span>to practice the Golden Rule and to build upon it a better and nobler citizenship.</span>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
