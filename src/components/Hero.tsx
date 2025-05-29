@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
@@ -7,53 +8,110 @@ import { Mail, Users, Calendar, Shield, Link } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 const Hero = () => {
-  const [showModal, setShowModal] = useState(false);
-  const [formData, setFormData] = useState({
+  const [showMembershipModal, setShowMembershipModal] = useState(false);
+  const [membershipFormData, setMembershipFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    address: '',
+    city: '',
+    state: '',
+    zipCode: '',
+    occupation: '',
+    employer: '',
+    workPhone: '',
+    emergencyContact: '',
+    emergencyPhone: '',
+    interests: '',
+    volunteerExperience: '',
+    availability: '',
+    references: ''
+  });
+  const [volunteerFormData, setVolunteerFormData] = useState({
     firstName: '',
     lastName: '',
     email: '',
     phone: '',
     interests: ''
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isMembershipSubmitting, setIsMembershipSubmitting] = useState(false);
+  const [isVolunteerSubmitting, setIsVolunteerSubmitting] = useState(false);
   const { toast } = useToast();
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleMembershipChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setMembershipFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleEmailClick = () => {
-    window.location.href = "mailto:info@duluthcivitanclub.org?subject=Membership%20Inquiry";
+  const handleVolunteerChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setVolunteerFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const handleMembershipSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
+    setIsMembershipSubmitting(true);
     
-    // In a real implementation, this would send data to a server
-    // For now, we'll simulate sending an email by creating a mailto link
-    const subject = encodeURIComponent("Membership");
+    const subject = encodeURIComponent("Membership Application");
     const body = encodeURIComponent(
-      `New membership inquiry:\n\nName: ${formData.firstName} ${formData.lastName}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nInterests: ${formData.interests}`
+      `New membership application:\n\nPersonal Information:\nName: ${membershipFormData.firstName} ${membershipFormData.lastName}\nEmail: ${membershipFormData.email}\nPhone: ${membershipFormData.phone}\nAddress: ${membershipFormData.address}\nCity: ${membershipFormData.city}\nState: ${membershipFormData.state}\nZip: ${membershipFormData.zipCode}\n\nProfessional Information:\nOccupation: ${membershipFormData.occupation}\nEmployer: ${membershipFormData.employer}\nWork Phone: ${membershipFormData.workPhone}\n\nEmergency Contact:\nName: ${membershipFormData.emergencyContact}\nPhone: ${membershipFormData.emergencyPhone}\n\nInterests & Experience:\nInterests: ${membershipFormData.interests}\nVolunteer Experience: ${membershipFormData.volunteerExperience}\nAvailability: ${membershipFormData.availability}\nReferences: ${membershipFormData.references}`
     );
     
-    // Open email client with pre-filled information
     window.location.href = `mailto:info@duluthcivitanclub.org?subject=${subject}&body=${body}`;
     
-    // Reset form and show success message
     setTimeout(() => {
-      setFormData({
+      setMembershipFormData({
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+        address: '',
+        city: '',
+        state: '',
+        zipCode: '',
+        occupation: '',
+        employer: '',
+        workPhone: '',
+        emergencyContact: '',
+        emergencyPhone: '',
+        interests: '',
+        volunteerExperience: '',
+        availability: '',
+        references: ''
+      });
+      setIsMembershipSubmitting(false);
+      setShowMembershipModal(false);
+      toast({
+        title: "Membership Application Sent",
+        description: "Thank you for your interest in joining Duluth Civitan. We'll be in touch soon!",
+      });
+    }, 1000);
+  };
+
+  const handleVolunteerSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsVolunteerSubmitting(true);
+    
+    const subject = encodeURIComponent("I am interested in becoming a Volunteer");
+    const body = encodeURIComponent(
+      `New volunteer inquiry:\n\nName: ${volunteerFormData.firstName} ${volunteerFormData.lastName}\nEmail: ${volunteerFormData.email}\nPhone: ${volunteerFormData.phone}\nInterests: ${volunteerFormData.interests}`
+    );
+    
+    window.location.href = `mailto:info@duluthcivitanclub.org?subject=${subject}&body=${body}`;
+    
+    setTimeout(() => {
+      setVolunteerFormData({
         firstName: '',
         lastName: '',
         email: '',
         phone: '',
         interests: ''
       });
-      setIsSubmitting(false);
+      setIsVolunteerSubmitting(false);
       toast({
-        title: "Information Request Sent",
-        description: "Thank you for your interest. We'll be in touch soon!",
+        title: "Volunteer Information Request Sent",
+        description: "Thank you for your interest in volunteering with Duluth Civitan. We'll be in touch soon!",
       });
     }, 1000);
   };
@@ -63,7 +121,7 @@ const Hero = () => {
       {/* Hero image with overlay */}
       <div className="relative">
         <div className="bg-[url('/lovable-uploads/c661b80b-0f36-491c-8501-278dc0b2f7c8.png')] bg-cover bg-center h-[800px] md:h-[900px]"></div>
-        <div className="absolute inset-0 bg-[#ffffff40]"></div> {/* 25% opacity white overlay */}
+        <div className="absolute inset-0 bg-[#ffffff40]"></div>
       </div>
 
       {/* Content over the hero image */}
@@ -108,9 +166,9 @@ const Hero = () => {
               <div className="mt-10 flex flex-wrap gap-4">
                 <Button 
                   className="bg-civitan-gold text-civitan-blue hover:bg-white hover:text-civitan-blue text-lg px-8 py-6 h-auto"
-                  onClick={() => setShowModal(true)}
+                  onClick={() => setShowMembershipModal(true)}
                 >
-                  Learn More About Membership
+                  Membership Application
                 </Button>
                 
                 <Button 
@@ -132,16 +190,16 @@ const Hero = () => {
                 />
               </div>
             
-              <h3 className="text-2xl font-bold text-civitan-blue mb-2 text-center">Join Duluth Civitan</h3>
-              <p className="text-center text-gray-600 mb-6">Get information about upcoming events and membership opportunities with Duluth Civitan in Duluth, Georgia</p>
+              <h3 className="text-2xl font-bold text-civitan-blue mb-2 text-center">Volunteer with Duluth Civitan</h3>
+              <p className="text-center text-gray-600 mb-6">Get information about volunteer opportunities with Duluth Civitan in Duluth, Georgia</p>
               
-              <form onSubmit={handleFormSubmit} className="space-y-4">
+              <form onSubmit={handleVolunteerSubmit} className="space-y-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <Input 
                     type="text"
                     name="firstName"
-                    value={formData.firstName}
-                    onChange={handleChange}
+                    value={volunteerFormData.firstName}
+                    onChange={handleVolunteerChange}
                     placeholder="First Name"
                     className="bg-white"
                     required
@@ -149,8 +207,8 @@ const Hero = () => {
                   <Input 
                     type="text"
                     name="lastName"
-                    value={formData.lastName}
-                    onChange={handleChange}
+                    value={volunteerFormData.lastName}
+                    onChange={handleVolunteerChange}
                     placeholder="Last Name"
                     className="bg-white"
                     required
@@ -159,8 +217,8 @@ const Hero = () => {
                 <Input 
                   type="email"
                   name="email"
-                  value={formData.email}
-                  onChange={handleChange}
+                  value={volunteerFormData.email}
+                  onChange={handleVolunteerChange}
                   placeholder="Email Address"
                   className="bg-white"
                   required
@@ -168,26 +226,26 @@ const Hero = () => {
                 <Input 
                   type="tel"
                   name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
+                  value={volunteerFormData.phone}
+                  onChange={handleVolunteerChange}
                   placeholder="Phone Number"
                   className="bg-white"
                   required
                 />
                 <Textarea
                   name="interests"
-                  value={formData.interests}
-                  onChange={handleChange}
-                  placeholder="What interests you most about our community?"
+                  value={volunteerFormData.interests}
+                  onChange={handleVolunteerChange}
+                  placeholder="What volunteer opportunities interest you most?"
                   className="bg-white"
                   rows={3}
                 />
                 <Button 
                   type="submit" 
                   className="w-full bg-civitan-blue hover:bg-civitan-gold hover:text-civitan-blue py-6 h-auto text-lg font-semibold"
-                  disabled={isSubmitting}
+                  disabled={isVolunteerSubmitting}
                 >
-                  {isSubmitting ? "Sending..." : "Request Information"}
+                  {isVolunteerSubmitting ? "Sending..." : "Request Volunteer Information"}
                 </Button>
                 <p className="text-xs text-center text-gray-500 mt-2">
                   By submitting, you agree to receive communications from us. You can unsubscribe anytime.
@@ -198,66 +256,197 @@ const Hero = () => {
         </div>
       </div>
 
-      <Dialog open={showModal} onOpenChange={setShowModal}>
-        <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">
+      {/* Membership Application Modal */}
+      <Dialog open={showMembershipModal} onOpenChange={setShowMembershipModal}>
+        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle className="text-2xl font-bold text-civitan-blue mb-4">
-              Join Duluth Civitan - Professionals Making an Impact in Duluth, Georgia
+              Duluth Civitan Membership Application
             </DialogTitle>
             <DialogDescription className="text-lg text-civitan-gray">
-              Duluth Civitan connects career-focused professionals who want to leverage their skills for community impact while building valuable connections in Duluth, Georgia.
+              Join a community of professionals making a difference in Duluth, Georgia. Please fill out this application to begin your journey with Duluth Civitan.
             </DialogDescription>
           </DialogHeader>
           
-          <div className="space-y-6 text-civitan-gray">
-            <div>
-              <h3 className="text-xl font-semibold mb-4">Benefits designed for professionals like you:</h3>
-              <ul className="space-y-4">
-                <li className="flex gap-2">
-                  <span className="text-civitan-gold">•</span>
-                  <span><strong>Balance Career & Community</strong> – Flexible volunteer opportunities that respect your busy schedule</span>
-                </li>
-                <li className="flex gap-2">
-                  <span className="text-civitan-gold">•</span>
-                  <span><strong>Expand Your Network</strong> – Connect with local business leaders, entrepreneurs, and professionals in Duluth, Georgia</span>
-                </li>
-                <li className="flex gap-2">
-                  <span className="text-civitan-gold">•</span>
-                  <span><strong>Enhance Your Resume</strong> – Build leadership experience through board positions and project management</span>
-                </li>
-                <li className="flex gap-2">
-                  <span className="text-civitan-gold">•</span>
-                  <span><strong>Twice-Monthly Lunches</strong> – Conveniently scheduled meetings that fit into your workday</span>
-                </li>
-                <li className="flex gap-2">
-                  <span className="text-civitan-gold">•</span>
-                  <span><strong>Family-Friendly Events</strong> – Opportunities that welcome your spouse and children</span>
-                </li>
-                <li className="flex gap-2">
-                  <span className="text-civitan-gold">•</span>
-                  <span><strong>Professional Development</strong> – Learn new skills while giving back to the community</span>
-                </li>
-                <li className="flex gap-2">
-                  <span className="text-civitan-gold">•</span>
-                  <span><strong>Make Connections That Matter</strong> – Build relationships that extend beyond networking events</span>
-                </li>
-              </ul>
+          <form onSubmit={handleMembershipSubmit} className="space-y-6">
+            {/* Personal Information */}
+            <div className="space-y-4">
+              <h3 className="text-lg font-semibold text-civitan-blue border-b border-civitan-gold pb-2">Personal Information</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <Input
+                  type="text"
+                  name="firstName"
+                  value={membershipFormData.firstName}
+                  onChange={handleMembershipChange}
+                  placeholder="First Name *"
+                  required
+                />
+                <Input
+                  type="text"
+                  name="lastName"
+                  value={membershipFormData.lastName}
+                  onChange={handleMembershipChange}
+                  placeholder="Last Name *"
+                  required
+                />
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <Input
+                  type="email"
+                  name="email"
+                  value={membershipFormData.email}
+                  onChange={handleMembershipChange}
+                  placeholder="Email Address *"
+                  required
+                />
+                <Input
+                  type="tel"
+                  name="phone"
+                  value={membershipFormData.phone}
+                  onChange={handleMembershipChange}
+                  placeholder="Phone Number *"
+                  required
+                />
+              </div>
+              <Input
+                type="text"
+                name="address"
+                value={membershipFormData.address}
+                onChange={handleMembershipChange}
+                placeholder="Street Address *"
+                required
+              />
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <Input
+                  type="text"
+                  name="city"
+                  value={membershipFormData.city}
+                  onChange={handleMembershipChange}
+                  placeholder="City *"
+                  required
+                />
+                <Input
+                  type="text"
+                  name="state"
+                  value={membershipFormData.state}
+                  onChange={handleMembershipChange}
+                  placeholder="State *"
+                  required
+                />
+                <Input
+                  type="text"
+                  name="zipCode"
+                  value={membershipFormData.zipCode}
+                  onChange={handleMembershipChange}
+                  placeholder="Zip Code *"
+                  required
+                />
+              </div>
             </div>
 
+            {/* Professional Information */}
             <div className="space-y-4">
-              <h3 className="text-xl font-semibold">Ready to take the next step?</h3>
-              <p>
-                We understand your time is valuable. Let's discuss how Duluth Civitan can align with your professional goals and community interests.
-              </p>
+              <h3 className="text-lg font-semibold text-civitan-blue border-b border-civitan-gold pb-2">Professional Information</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <Input
+                  type="text"
+                  name="occupation"
+                  value={membershipFormData.occupation}
+                  onChange={handleMembershipChange}
+                  placeholder="Occupation/Title"
+                />
+                <Input
+                  type="text"
+                  name="employer"
+                  value={membershipFormData.employer}
+                  onChange={handleMembershipChange}
+                  placeholder="Employer/Company"
+                />
+              </div>
+              <Input
+                type="tel"
+                name="workPhone"
+                value={membershipFormData.workPhone}
+                onChange={handleMembershipChange}
+                placeholder="Work Phone Number"
+              />
+            </div>
+
+            {/* Emergency Contact */}
+            <div className="space-y-4">
+              <h3 className="text-lg font-semibold text-civitan-blue border-b border-civitan-gold pb-2">Emergency Contact</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <Input
+                  type="text"
+                  name="emergencyContact"
+                  value={membershipFormData.emergencyContact}
+                  onChange={handleMembershipChange}
+                  placeholder="Emergency Contact Name"
+                />
+                <Input
+                  type="tel"
+                  name="emergencyPhone"
+                  value={membershipFormData.emergencyPhone}
+                  onChange={handleMembershipChange}
+                  placeholder="Emergency Contact Phone"
+                />
+              </div>
+            </div>
+
+            {/* Interests & Experience */}
+            <div className="space-y-4">
+              <h3 className="text-lg font-semibold text-civitan-blue border-b border-civitan-gold pb-2">Interests & Experience</h3>
+              <Textarea
+                name="interests"
+                value={membershipFormData.interests}
+                onChange={handleMembershipChange}
+                placeholder="What interests you most about Duluth Civitan? What causes are you passionate about?"
+                rows={3}
+              />
+              <Textarea
+                name="volunteerExperience"
+                value={membershipFormData.volunteerExperience}
+                onChange={handleMembershipChange}
+                placeholder="Previous volunteer experience (organizations, roles, etc.)"
+                rows={3}
+              />
+              <Textarea
+                name="availability"
+                value={membershipFormData.availability}
+                onChange={handleMembershipChange}
+                placeholder="What is your availability for meetings and volunteer activities?"
+                rows={2}
+              />
+              <Textarea
+                name="references"
+                value={membershipFormData.references}
+                onChange={handleMembershipChange}
+                placeholder="Professional or personal references (names and contact information)"
+                rows={3}
+              />
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <Button 
-                onClick={handleEmailClick}
-                className="bg-civitan-blue hover:bg-civitan-gold hover:text-civitan-blue flex items-center gap-2"
+                type="submit" 
+                className="flex-1 bg-civitan-blue hover:bg-civitan-gold hover:text-civitan-blue py-6 h-auto text-lg font-semibold"
+                disabled={isMembershipSubmitting}
               >
-                <Mail className="h-4 w-4" />
-                Contact Us
+                {isMembershipSubmitting ? "Submitting Application..." : "Submit Membership Application"}
+              </Button>
+              <Button 
+                type="button" 
+                variant="outline"
+                className="flex-1 py-6 h-auto text-lg"
+                onClick={() => setShowMembershipModal(false)}
+              >
+                Cancel
               </Button>
             </div>
-          </div>
+            <p className="text-xs text-center text-gray-500 mt-4">
+              * Required fields. By submitting this application, you agree to receive communications from Duluth Civitan regarding your membership application and future club activities.
+            </p>
+          </form>
         </DialogContent>
       </Dialog>
     </div>

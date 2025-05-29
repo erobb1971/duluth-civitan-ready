@@ -2,7 +2,6 @@
 import React from 'react';
 import Hero from '../components/Hero';
 import HistorySection from '../components/HistorySection';
-import ProgramsSection from '../components/ProgramsSection';
 import AboutSection from '../components/AboutSection';
 
 const Index = () => {
@@ -12,7 +11,6 @@ const Index = () => {
       <Hero />
       
       {/* Main content sections */}
-      <ProgramsSection />
       <AboutSection />
       <HistorySection />
       
