@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
@@ -73,11 +72,11 @@ const Hero = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
             <div className="text-civitan-blue">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                Make a <span className="text-civitan-gold">Real Difference</span> in Your Community
+                Make a <span className="text-civitan-gold">Real Difference</span> in Duluth, Georgia
               </h1>
               
               <p className="text-xl mb-8 leading-relaxed max-w-xl">
-                Join a network of like-minded professionals who balance career success with meaningful community impact.
+                Join Duluth Civitan - a network of like-minded professionals who balance career success with meaningful community impact in Duluth, Georgia.
               </p>
               
               <div className="space-y-6">
@@ -85,7 +84,7 @@ const Hero = () => {
                   <Users className="h-6 w-6 text-civitan-gold flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="text-xl font-semibold mb-1">Expand Your Professional Network</h3>
-                    <p className="text-civitan-blue/90">Connect with local leaders and professionals in your field</p>
+                    <p className="text-civitan-blue/90">Connect with local leaders and professionals in Duluth, Georgia</p>
                   </div>
                 </div>
                 
@@ -133,8 +132,8 @@ const Hero = () => {
                 />
               </div>
             
-              <h3 className="text-2xl font-bold text-civitan-blue mb-2 text-center">Join Our Community</h3>
-              <p className="text-center text-gray-600 mb-6">Get information about upcoming events and membership opportunities</p>
+              <h3 className="text-2xl font-bold text-civitan-blue mb-2 text-center">Join Duluth Civitan</h3>
+              <p className="text-center text-gray-600 mb-6">Get information about upcoming events and membership opportunities with Duluth Civitan in Duluth, Georgia</p>
               
               <form onSubmit={handleFormSubmit} className="space-y-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -203,10 +202,10 @@ const Hero = () => {
         <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle className="text-2xl font-bold text-civitan-blue mb-4">
-              Join Our Community of Professionals Making an Impact
+              Join Duluth Civitan - Professionals Making an Impact in Duluth, Georgia
             </DialogTitle>
             <DialogDescription className="text-lg text-civitan-gray">
-              The Duluth Civitan Club connects career-focused professionals who want to leverage their skills for community impact while building valuable connections.
+              Duluth Civitan connects career-focused professionals who want to leverage their skills for community impact while building valuable connections in Duluth, Georgia.
             </DialogDescription>
           </DialogHeader>
           
@@ -220,7 +219,7 @@ const Hero = () => {
                 </li>
                 <li className="flex gap-2">
                   <span className="text-civitan-gold">•</span>
-                  <span><strong>Expand Your Network</strong> – Connect with local business leaders, entrepreneurs, and professionals</span>
+                  <span><strong>Expand Your Network</strong> – Connect with local business leaders, entrepreneurs, and professionals in Duluth, Georgia</span>
                 </li>
                 <li className="flex gap-2">
                   <span className="text-civitan-gold">•</span>
@@ -248,7 +247,7 @@ const Hero = () => {
             <div className="space-y-4">
               <h3 className="text-xl font-semibold">Ready to take the next step?</h3>
               <p>
-                We understand your time is valuable. Let's discuss how Civitan can align with your professional goals and community interests.
+                We understand your time is valuable. Let's discuss how Duluth Civitan can align with your professional goals and community interests.
               </p>
               <Button 
                 onClick={handleEmailClick}

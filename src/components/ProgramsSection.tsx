@@ -5,22 +5,22 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/
 const programs = [
   {
     title: "Scholarships",
-    description: "We provide scholarships to deserving students in the community, helping them achieve their educational goals.",
+    description: "Duluth Civitan provides scholarships to deserving students in Duluth, Georgia, helping them achieve their educational goals.",
     icon: "📚"
   },
   {
     title: "Special Olympics Support",
-    description: "We actively support Special Olympics events providing volunteers and resources.",
+    description: "Duluth Civitan actively supports Special Olympics events providing volunteers and resources.",
     icon: "🏅"
   },
   {
     title: "Community Service Projects",
-    description: "From food drives to community clean-ups, we're actively involved in making Duluth a better place.",
+    description: "From food drives to community clean-ups, Duluth Civitan is actively involved in making Duluth, Georgia a better place.",
     icon: "🤝"
   },
   {
     title: "Fundraising Events",
-    description: "We organize various fundraising events throughout the year to support our initiatives and community programs.",
+    description: "Duluth Civitan organizes various fundraising events throughout the year to support our initiatives and community programs.",
     icon: "💰"
   }
 ];
