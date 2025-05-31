@@ -1,16 +1,22 @@
 
 import React from 'react';
 import Hero from '../components/Hero';
-import HistorySection from '../components/HistorySection';
+import CivitanCreedSection from '../components/CivitanCreedSection';
 import AboutSection from '../components/AboutSection';
+import HistorySection from '../components/HistorySection';
 
 const Index = () => {
   return (
     <div className="min-h-screen flex flex-col">
       {/* Landing page hero section */}
-      <Hero />
+      <div id="volunteer-form">
+        <Hero />
+      </div>
       
-      {/* Main content sections */}
+      {/* Civitan Creed Interactive Section */}
+      <CivitanCreedSection />
+      
+      {/* About and History sections */}
       <AboutSection />
       <HistorySection />
       
