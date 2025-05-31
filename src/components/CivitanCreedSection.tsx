@@ -2,97 +2,97 @@
 import React, { useState } from 'react';
 import { Card, CardContent } from './ui/card';
 
-interface CreedPrinciple {
+interface CreedLine {
   id: number;
-  title: string;
-  shortDescription: string;
-  fullDescription: string;
+  lineText: string;
+  frontContent: string;
+  backContent: string;
   icon: string;
 }
 
-const creedPrinciples: CreedPrinciple[] = [
+const civitanCreed: CreedLine[] = [
   {
     id: 1,
-    title: "Build Good Citizenship",
-    shortDescription: "Promote civic responsibility and community engagement",
-    fullDescription: "We strive to build good citizenship by encouraging active participation in civic life, promoting education, and fostering responsible citizenship among all members of society.",
+    lineText: "That citizenship is a privilege to be cherished",
+    frontContent: "Citizenship is a privilege to be cherished",
+    backContent: "We believe that being a citizen comes with both rights and responsibilities. We cherish the opportunity to participate in our democracy and work to make our communities better places for everyone.",
     icon: "🏛️"
   },
   {
     id: 2,
-    title: "Enjoy Life",
-    shortDescription: "Find joy and fulfillment in service to others",
-    fullDescription: "We believe that true happiness comes from serving others and making a positive difference in our communities while maintaining a positive outlook on life.",
-    icon: "😊"
-  },
-  {
-    id: 3,
-    title: "Work for World Peace",
-    shortDescription: "Promote understanding and harmony across all communities",
-    fullDescription: "Through our local actions and global connections, we work toward a world where understanding, cooperation, and peace prevail over conflict and division.",
-    icon: "🌍"
-  },
-  {
-    id: 4,
-    title: "Live the Golden Rule",
-    shortDescription: "Treat others as we would like to be treated",
-    fullDescription: "The foundation of all our service - treating every person with dignity, respect, and compassion regardless of their abilities or circumstances.",
-    icon: "⭐"
-  },
-  {
-    id: 5,
-    title: "Promote Justice",
-    shortDescription: "Champion fairness and equal opportunities for all",
-    fullDescription: "We advocate for justice, fairness, and equal opportunities regardless of ability, background, or circumstances. Everyone deserves a chance to succeed and be valued.",
-    icon: "⚖️"
-  },
-  {
-    id: 6,
-    title: "Have Faith in Democracy",
-    shortDescription: "Support democratic principles and civic participation",
-    fullDescription: "We believe in the power of democratic institutions and encourage active participation in the democratic process to create positive change in our communities.",
-    icon: "🗳️"
-  },
-  {
-    id: 7,
-    title: "Maintain an Optimistic Attitude",
-    shortDescription: "Approach challenges with hope and determination",
-    fullDescription: "We face challenges with hope, determination, and the belief that positive change is possible when we work together toward common goals.",
-    icon: "🌟"
-  },
-  {
-    id: 8,
-    title: "Work for Equal Rights",
-    shortDescription: "Ensure equal opportunities for people with disabilities",
-    fullDescription: "We are committed to ensuring that all individuals, especially those with developmental disabilities, have equal access to opportunities, services, and full participation in community life.",
+    lineText: "That service is the rent we pay for the space we occupy",
+    frontContent: "Service is the rent we pay for the space we occupy",
+    backContent: "Through volunteer service, we give back to our community as payment for the benefits we receive from living here. Every act of service strengthens the fabric of our society.",
     icon: "🤝"
   },
   {
+    id: 3,
+    lineText: "That work is the mission of life",
+    frontContent: "Work is the mission of life",
+    backContent: "We find purpose and meaning through our efforts to improve the lives of others, particularly those with developmental disabilities. Our work creates lasting positive change.",
+    icon: "💼"
+  },
+  {
+    id: 4,
+    lineText: "That mankind is entitled to an abundance of life",
+    frontContent: "Mankind is entitled to an abundance of life",
+    backContent: "Every person deserves the opportunity to live a full, meaningful life with access to education, employment, and community participation, regardless of their abilities or circumstances.",
+    icon: "🌟"
+  },
+  {
+    id: 5,
+    lineText: "That every individual is entitled to human dignity",
+    frontContent: "Every individual is entitled to human dignity",
+    backContent: "We treat every person with respect and recognize their inherent worth. This is especially important in our work with individuals who have developmental disabilities.",
+    icon: "👥"
+  },
+  {
+    id: 6,
+    lineText: "That equal opportunity is every human's right",
+    frontContent: "Equal opportunity is every human's right",
+    backContent: "We advocate for fair access to education, employment, housing, and community resources for all people, working to remove barriers that prevent full participation in society.",
+    icon: "⚖️"
+  },
+  {
+    id: 7,
+    lineText: "That human differences are assets, not defects",
+    frontContent: "Human differences are assets, not defects",
+    backContent: "We celebrate diversity and recognize that different perspectives, abilities, and experiences make our community stronger. Every person brings unique gifts to contribute.",
+    icon: "🌈"
+  },
+  {
+    id: 8,
+    lineText: "That working together enriches us all",
+    frontContent: "Working together enriches us all",
+    backContent: "Collaboration and partnership amplify our impact. When we work together across differences, we achieve more than any of us could accomplish alone.",
+    icon: "🤲"
+  },
+  {
     id: 9,
-    title: "Do Unto Others",
-    shortDescription: "Practice the golden rule in all our interactions",
-    fullDescription: "We commit to treating every person with the same kindness, respect, and consideration that we would want for ourselves and our loved ones.",
+    lineText: "That helping one another is our greatest joy",
+    frontContent: "Helping one another is our greatest joy",
+    backContent: "We find deep fulfillment in service to others. The relationships we build and the lives we touch through our volunteer work bring meaning and happiness to our own lives.",
     icon: "💝"
   },
   {
     id: 10,
-    title: "Help the Needy",
-    shortDescription: "Serve those who need our support most",
-    fullDescription: "We dedicate ourselves to identifying and serving those in our community who need support, particularly individuals with developmental disabilities and their families.",
-    icon: "🤲"
+    lineText: "That only the highest character and motives should guide us",
+    frontContent: "Only the highest character and motives should guide us",
+    backContent: "We hold ourselves to the highest standards of integrity, honesty, and ethical behavior in all our actions and decisions, both in our service work and daily lives.",
+    icon: "⭐"
   },
   {
     id: 11,
-    title: "Eliminate Prejudice",
-    shortDescription: "Promote understanding and acceptance of all people",
-    fullDescription: "We work to eliminate prejudice and discrimination by promoting understanding, acceptance, and inclusion of all people, regardless of their differences.",
-    icon: "🌈"
+    lineText: "That love conquers hate",
+    frontContent: "Love conquers hate",
+    backContent: "We respond to prejudice, discrimination, and negativity with compassion and understanding. Love and acceptance have the power to overcome division and build bridges.",
+    icon: "❤️"
   },
   {
     id: 12,
-    title: "Practice Tolerance",
-    shortDescription: "Embrace diversity and respect different perspectives",
-    fullDescription: "We practice tolerance by embracing diversity, respecting different perspectives, and creating inclusive environments where everyone feels valued and welcomed.",
+    lineText: "That faith and hope shall not perish from the earth",
+    frontContent: "Faith and hope shall not perish from the earth",
+    backContent: "We maintain optimism and belief in humanity's capacity for good. Through our service and dedication, we help ensure that hope continues to flourish in our communities.",
     icon: "🕊️"
   }
 ];
@@ -121,49 +121,54 @@ const CivitanCreedSection = () => {
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-civitan-blue mb-4 md:mb-6">
             The Civitan Creed
           </h2>
-          <p className="text-lg md:text-xl text-civitan-gray max-w-3xl mx-auto leading-relaxed">
-            These twelve principles guide everything we do at Duluth Civitan. 
-            Click each card to discover how we live these values in our community service.
+          <p className="text-lg md:text-xl text-civitan-gray max-w-3xl mx-auto leading-relaxed mb-6">
+            These twelve principles have guided Civitan International since our founding. 
+            Click each card to explore how we live these values in our community service.
           </p>
+          <div className="bg-white/80 backdrop-blur-sm rounded-lg p-4 md:p-6 max-w-4xl mx-auto shadow-sm border border-civitan-gold/20">
+            <p className="text-sm md:text-base text-civitan-blue font-medium italic">
+              "We believe..."
+            </p>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6 lg:gap-8 max-w-7xl mx-auto">
-          {creedPrinciples.map((principle) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6 max-w-7xl mx-auto">
+          {civitanCreed.map((creed) => (
             <div 
-              key={principle.id} 
+              key={creed.id} 
               className="h-64 md:h-72 lg:h-80"
               style={{ perspective: '1000px' }}
             >
               <Card 
                 className={`relative w-full h-full cursor-pointer transition-all duration-700 hover:scale-105 ${
-                  isFlipped(principle.id) ? '[transform:rotateY(180deg)]' : ''
+                  isFlipped(creed.id) ? '[transform:rotateY(180deg)]' : ''
                 }`}
                 style={{ 
                   transformStyle: 'preserve-3d',
                   transformOrigin: 'center center'
                 }}
-                onClick={() => toggleCard(principle.id)}
+                onClick={() => toggleCard(creed.id)}
               >
                 {/* Front of card */}
                 <CardContent 
-                  className="absolute inset-0 p-4 md:p-6 lg:p-8 flex flex-col items-center justify-center text-center bg-gradient-to-br from-civitan-blue to-civitan-blue/80 text-white rounded-lg shadow-xl"
+                  className="absolute inset-0 p-4 md:p-6 flex flex-col items-center justify-center text-center bg-gradient-to-br from-civitan-blue to-civitan-blue/80 text-white rounded-lg shadow-xl"
                   style={{ 
                     backfaceVisibility: 'hidden',
                     WebkitBackfaceVisibility: 'hidden'
                   }}
                 >
-                  <div className="text-3xl md:text-4xl lg:text-5xl mb-3 md:mb-4 lg:mb-6 filter drop-shadow-lg">
-                    {principle.icon}
+                  <div className="text-3xl md:text-4xl mb-3 md:mb-4 filter drop-shadow-lg">
+                    {creed.icon}
                   </div>
-                  <h3 className="text-lg md:text-xl lg:text-2xl font-bold mb-2 md:mb-3 lg:mb-4 leading-tight">
-                    {principle.title}
+                  <div className="text-xs md:text-sm opacity-75 mb-2">
+                    Line {creed.id}
+                  </div>
+                  <h3 className="text-sm md:text-base lg:text-lg font-bold mb-3 md:mb-4 leading-tight">
+                    {creed.frontContent}
                   </h3>
-                  <p className="text-sm md:text-base lg:text-lg opacity-90 leading-relaxed mb-3 md:mb-4 lg:mb-6">
-                    {principle.shortDescription}
-                  </p>
-                  <div className="text-xs md:text-sm opacity-75 flex items-center">
+                  <div className="text-xs opacity-75 flex items-center mt-auto">
                     <span>Tap to learn more</span>
-                    <svg className="ml-2 w-3 h-3 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="ml-2 w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                     </svg>
                   </div>
@@ -171,25 +176,28 @@ const CivitanCreedSection = () => {
 
                 {/* Back of card */}
                 <CardContent 
-                  className="absolute inset-0 p-4 md:p-6 lg:p-8 flex flex-col justify-center bg-gradient-to-br from-civitan-gold to-civitan-gold/90 text-civitan-blue rounded-lg shadow-xl"
+                  className="absolute inset-0 p-4 md:p-6 flex flex-col justify-center bg-gradient-to-br from-civitan-gold to-civitan-gold/90 text-civitan-blue rounded-lg shadow-xl"
                   style={{ 
                     backfaceVisibility: 'hidden',
                     WebkitBackfaceVisibility: 'hidden',
                     transform: 'rotateY(180deg)'
                   }}
                 >
-                  <div className="text-2xl md:text-3xl lg:text-4xl mb-2 md:mb-3 lg:mb-4 text-center">
-                    {principle.icon}
+                  <div className="text-2xl md:text-3xl mb-2 md:mb-3 text-center">
+                    {creed.icon}
                   </div>
-                  <h3 className="text-lg md:text-xl font-bold mb-2 md:mb-3 lg:mb-4 text-center">
-                    {principle.title}
+                  <div className="text-xs md:text-sm font-medium mb-2 text-center opacity-75">
+                    Line {creed.id}
+                  </div>
+                  <h3 className="text-sm md:text-base font-bold mb-3 md:mb-4 text-center">
+                    {creed.frontContent}
                   </h3>
-                  <p className="text-sm md:text-base leading-relaxed text-center flex-grow flex items-center">
-                    {principle.fullDescription}
+                  <p className="text-xs md:text-sm leading-relaxed text-center flex-grow flex items-center">
+                    {creed.backContent}
                   </p>
-                  <div className="mt-3 md:mt-4 lg:mt-6 text-xs md:text-sm text-center opacity-75 flex items-center justify-center">
+                  <div className="mt-3 md:mt-4 text-xs text-center opacity-75 flex items-center justify-center">
                     <span>Tap to flip back</span>
-                    <svg className="ml-2 w-3 h-3 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="ml-2 w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 17l-5-5m0 0l5-5m-5 5h12" />
                     </svg>
                   </div>
@@ -202,7 +210,7 @@ const CivitanCreedSection = () => {
         <div className="text-center mt-8 md:mt-12">
           <div className="bg-white/80 backdrop-blur-sm rounded-lg p-6 md:p-8 max-w-4xl mx-auto shadow-lg border border-civitan-gold/20">
             <h3 className="text-xl md:text-2xl font-bold text-civitan-blue mb-3 md:mb-4">
-              Living Our Values in Duluth, Georgia
+              Living the Creed in Duluth, Georgia
             </h3>
             <p className="text-base md:text-lg text-civitan-gray leading-relaxed">
               Since 2003, Duluth Civitan has embodied these principles through our dedication to serving 
