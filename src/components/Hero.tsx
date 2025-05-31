@@ -6,6 +6,7 @@ import { Textarea } from './ui/textarea';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "./ui/dialog";
 import { Mail, Users, Calendar, Shield, Link } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 const Hero = () => {
   const [showMembershipModal, setShowMembershipModal] = useState(false);
@@ -89,18 +90,36 @@ const Hero = () => {
     }, 1000);
   };
 
-  const handleVolunteerSubmit = (e: React.FormEvent) => {
+  const handleVolunteerSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsVolunteerSubmitting(true);
     
-    const subject = encodeURIComponent("I am interested in becoming a Volunteer");
-    const body = encodeURIComponent(
-      `New volunteer inquiry:\n\nName: ${volunteerFormData.firstName} ${volunteerFormData.lastName}\nEmail: ${volunteerFormData.email}\nPhone: ${volunteerFormData.phone}\nInterests: ${volunteerFormData.interests}`
-    );
-    
-    window.location.href = `mailto:info@duluthcivitanclub.org?subject=${subject}&body=${body}`;
-    
-    setTimeout(() => {
+    try {
+      // Store the volunteer application in Supabase
+      const { error } = await supabase
+        .from('volunteer_applications')
+        .insert({
+          first_name: volunteerFormData.firstName,
+          last_name: volunteerFormData.lastName,
+          email: volunteerFormData.email,
+          phone: volunteerFormData.phone,
+          interests: volunteerFormData.interests
+        });
+
+      if (error) {
+        console.error('Error storing volunteer application:', error);
+        throw error;
+      }
+
+      // Also send email for immediate notification
+      const subject = encodeURIComponent("New Volunteer Application");
+      const body = encodeURIComponent(
+        `New volunteer inquiry:\n\nName: ${volunteerFormData.firstName} ${volunteerFormData.lastName}\nEmail: ${volunteerFormData.email}\nPhone: ${volunteerFormData.phone}\nInterests: ${volunteerFormData.interests}`
+      );
+      
+      window.location.href = `mailto:info@duluthcivitanclub.org?subject=${subject}&body=${body}`;
+
+      // Reset form and show success message
       setVolunteerFormData({
         firstName: '',
         lastName: '',
@@ -108,12 +127,22 @@ const Hero = () => {
         phone: '',
         interests: ''
       });
-      setIsVolunteerSubmitting(false);
+
       toast({
-        title: "Volunteer Information Request Sent",
-        description: "Thank you for your interest in volunteering with Duluth Civitan. We'll be in touch soon!",
+        title: "Volunteer Application Submitted",
+        description: "Thank you for your interest in volunteering with Duluth Civitan. We've saved your information and will be in touch soon!",
       });
-    }, 1000);
+
+    } catch (error) {
+      console.error('Error submitting volunteer application:', error);
+      toast({
+        title: "Submission Error",
+        description: "There was an error submitting your application. Please try again or contact us directly.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsVolunteerSubmitting(false);
+    }
   };
 
   return (
@@ -245,7 +274,7 @@ const Hero = () => {
                   className="w-full bg-civitan-blue hover:bg-civitan-gold hover:text-civitan-blue py-6 h-auto text-lg font-semibold"
                   disabled={isVolunteerSubmitting}
                 >
-                  {isVolunteerSubmitting ? "Sending..." : "Request Volunteer Information"}
+                  {isVolunteerSubmitting ? "Submitting..." : "Request Volunteer Information"}
                 </Button>
                 <p className="text-xs text-center text-gray-500 mt-2">
                   By submitting, you agree to receive communications from us. You can unsubscribe anytime.
