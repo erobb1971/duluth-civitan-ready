@@ -7,6 +7,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } f
 import { Mail, Users, Calendar, Shield, Link } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
+import VolunteerForm from './VolunteerForm';
 
 const Hero = () => {
   const [showMembershipModal, setShowMembershipModal] = useState(false);
@@ -29,25 +30,12 @@ const Hero = () => {
     availability: '',
     references: ''
   });
-  const [volunteerFormData, setVolunteerFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    interests: ''
-  });
   const [isMembershipSubmitting, setIsMembershipSubmitting] = useState(false);
-  const [isVolunteerSubmitting, setIsVolunteerSubmitting] = useState(false);
   const { toast } = useToast();
 
   const handleMembershipChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setMembershipFormData(prev => ({ ...prev, [name]: value }));
-  };
-
-  const handleVolunteerChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setVolunteerFormData(prev => ({ ...prev, [name]: value }));
   };
 
   const handleMembershipSubmit = (e: React.FormEvent) => {
@@ -88,61 +76,6 @@ const Hero = () => {
         description: "Thank you for your interest in joining Duluth Civitan. We'll be in touch soon!",
       });
     }, 1000);
-  };
-
-  const handleVolunteerSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsVolunteerSubmitting(true);
-    
-    try {
-      // Store the volunteer application in Supabase
-      const { error } = await supabase
-        .from('volunteer_applications')
-        .insert({
-          first_name: volunteerFormData.firstName,
-          last_name: volunteerFormData.lastName,
-          email: volunteerFormData.email,
-          phone: volunteerFormData.phone,
-          interests: volunteerFormData.interests
-        });
-
-      if (error) {
-        console.error('Error storing volunteer application:', error);
-        throw error;
-      }
-
-      // Also send email for immediate notification
-      const subject = encodeURIComponent("New Volunteer Application");
-      const body = encodeURIComponent(
-        `New volunteer inquiry:\n\nName: ${volunteerFormData.firstName} ${volunteerFormData.lastName}\nEmail: ${volunteerFormData.email}\nPhone: ${volunteerFormData.phone}\nInterests: ${volunteerFormData.interests}`
-      );
-      
-      window.location.href = `mailto:info@duluthcivitanclub.org?subject=${subject}&body=${body}`;
-
-      // Reset form and show success message
-      setVolunteerFormData({
-        firstName: '',
-        lastName: '',
-        email: '',
-        phone: '',
-        interests: ''
-      });
-
-      toast({
-        title: "Volunteer Application Submitted",
-        description: "Thank you for your interest in volunteering with Duluth Civitan. We've saved your information and will be in touch soon!",
-      });
-
-    } catch (error) {
-      console.error('Error submitting volunteer application:', error);
-      toast({
-        title: "Submission Error",
-        description: "There was an error submitting your application. Please try again or contact us directly.",
-        variant: "destructive",
-      });
-    } finally {
-      setIsVolunteerSubmitting(false);
-    }
   };
 
   return (
@@ -210,77 +143,8 @@ const Hero = () => {
               </div>
             </div>
             
-            <div className="bg-white/98 p-8 rounded-lg shadow-xl">
-              <div className="flex justify-center mb-6">
-                <img 
-                  src="/lovable-uploads/2e31ada2-2131-47d1-ad50-613017a83c78.png" 
-                  alt="We Are Civitan" 
-                  className="max-w-full h-auto object-contain max-h-40"
-                />
-              </div>
-            
-              <h3 className="text-2xl font-bold text-civitan-blue mb-2 text-center">Volunteer with Duluth Civitan</h3>
-              <p className="text-center text-gray-600 mb-6">Get information about volunteer opportunities with Duluth Civitan in Duluth, Georgia</p>
-              
-              <form onSubmit={handleVolunteerSubmit} className="space-y-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <Input 
-                    type="text"
-                    name="firstName"
-                    value={volunteerFormData.firstName}
-                    onChange={handleVolunteerChange}
-                    placeholder="First Name"
-                    className="bg-white"
-                    required
-                  />
-                  <Input 
-                    type="text"
-                    name="lastName"
-                    value={volunteerFormData.lastName}
-                    onChange={handleVolunteerChange}
-                    placeholder="Last Name"
-                    className="bg-white"
-                    required
-                  />
-                </div>
-                <Input 
-                  type="email"
-                  name="email"
-                  value={volunteerFormData.email}
-                  onChange={handleVolunteerChange}
-                  placeholder="Email Address"
-                  className="bg-white"
-                  required
-                />
-                <Input 
-                  type="tel"
-                  name="phone"
-                  value={volunteerFormData.phone}
-                  onChange={handleVolunteerChange}
-                  placeholder="Phone Number"
-                  className="bg-white"
-                  required
-                />
-                <Textarea
-                  name="interests"
-                  value={volunteerFormData.interests}
-                  onChange={handleVolunteerChange}
-                  placeholder="What volunteer opportunities interest you most?"
-                  className="bg-white"
-                  rows={3}
-                />
-                <Button 
-                  type="submit" 
-                  className="w-full bg-civitan-blue hover:bg-civitan-gold hover:text-civitan-blue py-6 h-auto text-lg font-semibold"
-                  disabled={isVolunteerSubmitting}
-                >
-                  {isVolunteerSubmitting ? "Submitting..." : "Request Volunteer Information"}
-                </Button>
-                <p className="text-xs text-center text-gray-500 mt-2">
-                  By submitting, you agree to receive communications from us. You can unsubscribe anytime.
-                </p>
-              </form>
-            </div>
+            {/* Enhanced Volunteer Form */}
+            <VolunteerForm />
           </div>
         </div>
       </div>
